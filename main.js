@@ -27,7 +27,7 @@ dino.draw();
 
 class Cactus {
   constructor() {
-    this.x = 100;
+    this.x = 500;
     this.y = 200;
     this.width = 50;
     this.height = 50;
@@ -41,12 +41,27 @@ class Cactus {
 var cactus = new Cactus();
 cactus.draw();
 
+var timer = 0;
+var cactusArray = [];
+
 function 프레임마다실행할거() {
   requestAnimationFrame(프레임마다실행할거);
+  timer++;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  dino.x++;
+  // 120 프레임마다 장애물 생성, array에 넣음
+  if (timer % 120 === 0) {
+    var cactus = new Cactus();
+    cactusArray.push(cactus);
+  }
+  // Array에 있는 것 모두 그림
+  cactusArray.forEach((a) => {
+    a.x--;
+    a.draw();
+  });
+
+  //cactus.draw();
   dino.draw();
 }
 
