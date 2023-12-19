@@ -43,6 +43,9 @@ cactus.draw();
 
 function 프레임마다실행할거() {
   requestAnimationFrame(프레임마다실행할거);
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   dino.x++;
   dino.draw();
 }
