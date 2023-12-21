@@ -56,7 +56,12 @@ function 프레임마다실행할거() {
     cactusArray.push(cactus);
   }
   // Array에 있는 것 모두 그림
-  cactusArray.forEach((a) => {
+  cactusArray.forEach((a, i, o) => {
+    // x좌표가 0 미만이면 제거
+    if (a.x < 0) {
+      o.splice(i, 1);
+    }
+
     a.x--;
     a.draw();
   });
