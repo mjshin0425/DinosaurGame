@@ -43,6 +43,7 @@ cactus.draw();
 
 var timer = 0;
 var cactusArray = [];
+var jumptimer = 0;
 
 function 프레임마다실행할거() {
   requestAnimationFrame(프레임마다실행할거);
@@ -66,8 +67,20 @@ function 프레임마다실행할거() {
     a.draw();
   });
 
-  if (점프중 == true) {
+  // 클릭시 +1
+  if (jump == true) {
     dino.y--;
+    jumptimer++;
+  }
+
+  // 100 프레임 이상인 경우 아래로
+  if (jump == false) {
+    dino.y++;
+  }
+
+  // 100 프레임 이상인 경우 정지
+  if (jumptimer > 100) {
+    jump = false;
   }
 
   //cactus.draw();
@@ -77,10 +90,9 @@ function 프레임마다실행할거() {
 프레임마다실행할거();
 
 // 스페이스 바 클릭 시 점프
-
-let 점프중 = false;
+var jump = false;
 document.addEventListener("keydown", function (e) {
   if (e.code === "Space") {
-    점프중 = true;
+    jump = true;
   }
 });
