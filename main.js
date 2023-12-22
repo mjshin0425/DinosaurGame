@@ -62,12 +62,25 @@ function 프레임마다실행할거() {
       o.splice(i, 1);
     }
 
-    a.x--;
+    // a.x--;
     a.draw();
   });
+
+  if (점프중 == true) {
+    dino.y--;
+  }
 
   //cactus.draw();
   dino.draw();
 }
 
 프레임마다실행할거();
+
+// 스페이스 바 클릭 시 점프
+
+let 점프중 = false;
+document.addEventListener("keydown", function (e) {
+  if (e.code === "Space") {
+    점프중 = true;
+  }
+});
