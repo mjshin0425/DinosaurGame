@@ -63,7 +63,7 @@ function 프레임마다실행할거() {
       o.splice(i, 1);
     }
 
-    // a.x--;
+    a.x--;
     a.draw();
   });
 
@@ -75,12 +75,15 @@ function 프레임마다실행할거() {
 
   // 100 프레임 이상인 경우 아래로
   if (jump == false) {
-    dino.y++;
+    if (dino.y < 200) {
+      dino.y++;
+    }
   }
 
   // 100 프레임 이상인 경우 정지
   if (jumptimer > 100) {
     jump = false;
+    jumptimer = 0;
   }
 
   //cactus.draw();
