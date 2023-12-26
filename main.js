@@ -44,9 +44,10 @@ cactus.draw();
 var timer = 0;
 var cactusArray = [];
 var jumptimer = 0;
+var animation;
 
 function 프레임마다실행할거() {
-  requestAnimationFrame(프레임마다실행할거);
+  animation = requestAnimationFrame(프레임마다실행할거);
   timer++;
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -63,7 +64,11 @@ function 프레임마다실행할거() {
       o.splice(i, 1);
     }
 
-    a.x--;
+    //a.x--;
+
+    // 모든 장애물 충돌 체크 해야 하므로
+    collisionDetection(dino, a);
+
     a.draw();
   });
 
@@ -91,6 +96,16 @@ function 프레임마다실행할거() {
 }
 
 프레임마다실행할거();
+
+// 충돌 확인
+function collisionDetection(dino, cactus) {
+  let xDist = cactus.x - (dino.x + dino.width);
+  let yDist = cactus.y - (dino.y + dino.height);
+  if (xDist < 0 && yDist < 0) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    cancelAnimationFrame(animation);
+  }
+}
 
 // 스페이스 바 클릭 시 점프
 var jump = false;
