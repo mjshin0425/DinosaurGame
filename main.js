@@ -53,7 +53,7 @@ function 프레임마다실행할거() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   // 120 프레임마다 장애물 생성, array에 넣음
-  if (timer % 120 === 0) {
+  if (timer % 200 === 0) {
     var cactus = new Cactus();
     cactusArray.push(cactus);
   }
@@ -64,7 +64,7 @@ function 프레임마다실행할거() {
       o.splice(i, 1);
     }
 
-    //a.x--;
+    a.x--;
 
     // 모든 장애물 충돌 체크 해야 하므로
     collisionDetection(dino, a);
